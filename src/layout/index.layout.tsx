@@ -12,7 +12,7 @@ const Layout = (props: Props) => {
   return (
     <Box display="flex" flexDir="column" w="100%" h="100%">
       <HeaderLayout/>
-      <Box display="flex" flexDir="row" minH="100vh">
+      <Box display="flex" flexDir="row" minH="100vh" mt="100px">
         <SidebarLayout/>
         <Box w="75%" p="10px">
           {props.children}

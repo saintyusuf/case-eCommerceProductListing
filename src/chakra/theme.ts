@@ -13,8 +13,8 @@ const theme = extendTheme({
   styles: {
     global: (props:any) => ({
       body: {
-        color: mode("#000", "#fff")(props),
-        bg: mode("#fff", "#000")(props),
+        color: "var(--textColor)",
+        bg: "var(--bgColor)",
         img: {
           display: "inline-block",
           pointerEvents: "none",
@@ -25,6 +25,8 @@ const theme = extendTheme({
           color: "#fff"
         },
         "--borderColor": mode("#ddd", "#222")(props),
+        "--bgColor": mode("#fff", "#000")(props),
+        "--textColor": mode("#000", "#fff")(props),
       }
     }),
   },

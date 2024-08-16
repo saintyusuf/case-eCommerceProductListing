@@ -7,7 +7,7 @@ const HeaderLayout = () => {
   const {colorMode, toggleColorMode} = useColorMode()
   
   return (
-    <Box w="100%" h="100px" borderBottom="1px" borderColor="var(--borderColor)" p="10px">
+    <Box position="fixed" left="0" top="0" zIndex={100} bg="var(--bgColor)" w="100%" h="100px" borderBottom="1px" borderColor="var(--borderColor)" p="10px">
       <Box display="flex" flexDir="row" w="100%" h="100%">
         <Box display="flex" justifyItems="center" alignItems="center" w="25%">
           <Text fontSize={26} fontWeight={700} textAlign="center" w="100%" display="flex" flexDir="column">
