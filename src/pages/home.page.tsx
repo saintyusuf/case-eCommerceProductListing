@@ -1,8 +1,9 @@
 import { Box } from "@chakra-ui/react"
 import { Helmet } from "react-helmet-async"
 
-
 const HomePage = () => {
+
+
   
   return (
     <Box>
