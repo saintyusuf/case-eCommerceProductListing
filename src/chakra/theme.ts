@@ -24,6 +24,7 @@ const theme = extendTheme({
           bg: "#222",
           color: "#fff"
         },
+        "--borderColor": mode("#ddd", "#222")(props),
       }
     }),
   },

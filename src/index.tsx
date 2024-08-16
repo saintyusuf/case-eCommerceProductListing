@@ -5,13 +5,16 @@ import { HelmetProvider } from "react-helmet-async"
 import { ChakraProvider } from "@chakra-ui/react"
 import theme from "./chakra/theme"
 
+// LAYOUT
+import Layout from "./layout/index.layout"
+
 // PAGES
 import HomePage from "./pages/home.page"
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <HomePage />
+    element: <Layout children={<HomePage/>}/>
   }
 ])
 
