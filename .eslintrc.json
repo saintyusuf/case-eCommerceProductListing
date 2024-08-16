@@ -49,6 +49,7 @@
     "@typescript-eslint/no-namespace": "off",
     "no-async-promise-executor": "off",
     "@typescript-eslint/ban-types": "off",
-    "no-unexpected-multiline": "off"
+    "no-unexpected-multiline": "off",
+    "no-unused-vars": "off"
   }
 }  
