@@ -1,46 +1,141 @@
-# Getting Started with Create React App
+# Case - E-Commerce Product Listing
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<table>
+  <tbody>
+    <tr>
+      <td>
+        Requested
+      </td>
+      <td>
+        <h3>Overview</h3>
+        <p>Create a responsive and performant e-commerce product catalog page using React. The page should display a list of products, allow filtering and sorting, and implement a shopping cart functionality.</p>
+        <h3>Requirements</h3>
+        <ol>
+          <li>
+            <p>Product Listing</p>
+            <ul>
+              <li>Fetch product data from a mock API (you can use json-server or any other mock API service).</li>
+              <li>Display products in a grid layout with product image, name, price, and "Add to Cart" button.</li>
+              <li>Implement infinite scrolling or pagination for loading more products.</li>
+            </ul>
+          </li>
+          <li>
+            <p>Filtering and Sorting</p>
+            <ul>
+              <li>Add a sidebar with filter options (e.g., by category, price range).</li>
+              <li>Implement sorting functionality (e.g., by price, popularity).</li>
+              <li>Ensure filters and sorting work together correctly.</li>
+            </ul>
+          </li>
+          <li>
+            <p>Shopping Cart</p>
+            <ul>
+              <li>Create a cart component that displays added items, quantities, and total price.</li>
+              <li>Implement "Add to Cart" and "Remove from Cart" functionality.</li>
+              <li>Use React Context or Redux for state management.</li>
+            </ul>
+          </li>
+          <li>
+            <p>Styling and Responsiveness</p>
+            <ul>
+              <li>Use a CSS-in-JS solution (e.g., styled-components, Emotion) or CSS modules.</li>
+              <li>Ensure the layout is responsive and works well on mobile, tablet, and desktop.</li>
+              <li>Implement a coherent and visually appealing design.</li>
+            </ul>
+          </li>
+          <li>
+            <p>Performance Optimization</p>
+            <ul>
+              <li>Implement code splitting and lazy loading for better initial load time.</li>
+              <li>Use React.memo, useMemo, and useCallback where appropriate to optimize re-renders.</li>
+              <li>Implement image lazy loading for product images.</li>
+            </ul>
+          </li>
+          <li>
+            <p>API Integration and Error Handling</p>
+            <ul>
+              <li>Handle API errors gracefully and display user-friendly error messages.</li>
+              <li>Implement loading states while fetching data.</li>
+              <li>Use React Query or SWR for efficient data fetching and caching.</li>
+            </ul>
+          </li>
+          <li>
+            <p>Testing</p>
+            <ul>
+              <li>Write unit tests for key components using Jest and React Testing Library.</li>
+              <li>Implement at least one integration test for a critical user flow (e.g., adding a product to the cart).</li>
+            </ul>
+          </li>
+          <li>
+            <p>Documentation and Code Quality</p>
+            <p>Write clear comments and documentation for complex parts of the code.</p>
+            <ul>
+              <li>Follow React best practices and maintain consistent code style.</li>
+              <li>Use ESLint and Prettier for code formatting.</li>
+            </ul>
+          </li>
+        </ol>
+        <h3>Overview</h3>
+        <ul>
+          <li>Implement a simple product search functionality.</li>
+          <li>Add animations for smoother user experience (e.g., cart updates, filtering).</li>
+          <li>Implement a basic checkout process mockup.</li>
+        </ul>
+        <h3>Evaluation Criteria</h3>
+        <ul>
+          <li>Code quality and organization</li>
+          <li>Performance and optimization techniques</li>
+          <li>UI/UX design and responsiveness</li>
+          <li>Error handling and edge cases</li>
+          <li>Testing coverage and quality</li>
+          <li>Documentation and code comments</li>
+        </ul>
+        <h3>Submission</h3>
+        <ul>
+          <li>Provide a GitHub repository with your code.</li>
+          <li>Include a README with instructions on how to run the project locally.</li>
+          <li>Deploy the application to a free hosting service (e.g., Vercel, Netlify) and provide the live URL.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Result
+      </td>
+      <td>
+        <p>Loading...</p>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-## Available Scripts
 
-In the project directory, you can run:
+## About
 
-### `npm start`
+This is a case study to measure some React.js skills.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Stack
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+HTML, CSS, JS, TS, React.js, Chakra UI, Redux Toolkit, Axios, GSAP, React Helmet, React Loader Spinner, React Toastify
 
-### `npm test`
+## Installation
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Clone the repository
+```bash 
+git clone https://github.com/saintyusuf/case-eCommerceProductListing.git
+```
 
-### `npm run build`
+Change directory
+```bash 
+cd case-eCommerceProductListing
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Install dependencies
+```bash
+npm install
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Run the project
+```bash
+npm run start
+```
