@@ -2,6 +2,7 @@ import { Box, Button, Input, Text, useColorMode } from "@chakra-ui/react"
 import { IoCartOutline as IconCart } from "react-icons/io5"
 import { VscColorMode as IconColorMode } from "react-icons/vsc"
 import ButtonComponent from "../components/button.component"
+import LogoComponent from "../components/logo.component"
 
 const HeaderLayout = () => {
 
@@ -9,12 +10,9 @@ const HeaderLayout = () => {
   
   return (
     <Box position="fixed" left="0" top="0" zIndex={100} bg="var(--bgColor)" w="100%" h="100px" borderBottom="1px" borderColor="var(--borderColor)" p="10px">
-      <Box display="flex" flexDir="row" w="100%" h="100%">
+      <Box display="flex" flexDir="row" w="100%" h="100%" maxW="1440px" margin="auto">
         <Box display="flex" justifyItems="center" alignItems="center" w="25%">
-          <Text fontSize={26} fontWeight={700} textAlign="center" w="100%" display="flex" flexDir="column">
-            <span>eCommerce</span>
-            <span>ProductListing</span>
-          </Text>
+          <LogoComponent/>
         </Box>
         <Box w="50%" h="100%" display="flex" flexDir="row" justifyContent="start" alignItems="center" p="10px">
           <Box w="100%" h="55px" border="1px" borderColor="var(--borderColor)" borderRadius="25px" display="flex" flexDir="row" p="5px">
