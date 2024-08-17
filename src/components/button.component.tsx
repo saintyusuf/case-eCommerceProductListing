@@ -1,14 +1,11 @@
 import React from "react"
 import { Button, ButtonProps } from "@chakra-ui/react"
 
-interface Props {
-  children: React.ReactNode
-  style?: ButtonProps["style"]
-}
+type Props = ButtonProps
 
 const ButtonComponent = (props:Props) => {
   return (
-    <Button style={props.style} _active={{transform: "scale(0.95)"}}>
+    <Button _active={{transform: "scale(0.95)"}} {...props}>
       {props.children}
     </Button>
   )

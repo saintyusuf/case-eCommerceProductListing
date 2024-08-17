@@ -1,6 +1,7 @@
 import { Box, Button, Input, Text, useColorMode } from "@chakra-ui/react"
 import { IoCartOutline as IconCart } from "react-icons/io5"
 import { VscColorMode as IconColorMode } from "react-icons/vsc"
+import ButtonComponent from "../components/button.component"
 
 const HeaderLayout = () => {
 
@@ -18,16 +19,16 @@ const HeaderLayout = () => {
         <Box w="50%" h="100%" display="flex" flexDir="row" justifyContent="start" alignItems="center" p="10px">
           <Box w="100%" h="55px" border="1px" borderColor="var(--borderColor)" borderRadius="25px" display="flex" flexDir="row" p="5px">
             <Input placeholder="Search Product" w="80%" h="100%" px="20px" border="0" focusBorderColor="transparent" />
-            <Button w="20%" h="100%" bg="transparent" borderRadius="25px">Search</Button>
+            <ButtonComponent w="20%" h="100%" bg="transparent" borderRadius="25px">Search</ButtonComponent>
           </Box>
         </Box>
         <Box w="25%" h="100%" display="flex" flexDir="row" justifyContent="end" alignItems="center" p="10px">
           <Box>
             <IconCart size={37.5}/>
           </Box>
-          <Box ml={22.5} cursor="pointer" onClick={() => toggleColorMode()}>
+          <ButtonComponent ml={22.5} cursor="pointer" bg="transparent" p="5px" onClick={() => toggleColorMode()}>
             <IconColorMode size={32.5}/>
-          </Box>
+          </ButtonComponent>
         </Box>
       </Box>
     </Box>
