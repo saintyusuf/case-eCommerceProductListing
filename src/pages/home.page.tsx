@@ -1,5 +1,6 @@
 import { Box } from "@chakra-ui/react"
 import { Helmet } from "react-helmet-async"
+import ProductsComponent from "../components/products.component"
 
 const HomePage = () => {
 
@@ -11,8 +12,7 @@ const HomePage = () => {
         <title>Home</title>
       </Helmet>
       <Box>
-        <h1>Home</h1>
-        <p>Welcome to the home page</p>
+        <ProductsComponent/>
       </Box>
     </Box>
   )
