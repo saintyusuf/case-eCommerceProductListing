@@ -40,7 +40,7 @@ const HeaderLayout = () => {
               <IconCart size={35} pointerEvents="none"/>
               {
                 cartItemsLength > 0 && (
-                  <Box pos="absolute" top="-5px" right="-5px" bg="red" borderRadius="5px" w="20px" h="20px" display="flex" justifyContent="center" alignItems="center">
+                  <Box pointerEvents="none" pos="absolute" top="-5px" right="-5px" bg="red" borderRadius="5px" w="20px" h="20px" display="flex" justifyContent="center" alignItems="center">
                     <Text fontSize="12px" color="white">{cartItemsLength}</Text>
                   </Box>
                 )
