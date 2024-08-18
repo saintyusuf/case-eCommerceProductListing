@@ -3,6 +3,8 @@ import { Box } from "@chakra-ui/react"
 import HeaderLayout from "./header.layout"
 import FooterLayout from "./footer.layout"
 import SidebarLayout from "./sidebar.layout"
+import { ToastContainer } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
 
 interface Props {
   children: React.ReactNode
@@ -20,6 +22,7 @@ const Layout = (props: Props) => {
         </Box>
       </Box>
       <FooterLayout/>
+      <ToastContainer/>
     </Box>
   )
 }

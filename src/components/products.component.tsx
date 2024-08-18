@@ -41,13 +41,19 @@ const ProductsComponent = () => {
   },[])
   
   return (
-    <Box display="flex" flexDir="row" flexWrap="wrap">
-      {(products && !loading) ? products.map((product:ProductType)=>{
-        return (
-          <ProductComponent key={product.id} product={product}/>
-        )
-      }) : <Box display="flex" justifyContent="center" alignItems="center" w="100%" h="100%"><LoadingComponent/></Box>}
-    </Box>
+    products && !loading ? (
+      <Box display="flex" flexDir="row" flexWrap="wrap">
+        {products.map((product:ProductType)=>{
+          return (
+            <ProductComponent key={product.id} product={product}/>
+          )
+        })}
+      </Box>
+    ) : (
+      <Box display="flex" justifyContent="center" alignItems="center" w="100%" h="100%">
+        <LoadingComponent/>
+      </Box>
+    )
   )
 }
 

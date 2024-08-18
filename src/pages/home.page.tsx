@@ -7,11 +7,11 @@ const HomePage = () => {
 
   
   return (
-    <Box>
+    <Box h="100%">
       <Helmet>
         <title>Home</title>
       </Helmet>
-      <Box>
+      <Box h="100%">
         <ProductsComponent/>
       </Box>
     </Box>
