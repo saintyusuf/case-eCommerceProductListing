@@ -19,9 +19,11 @@ const CartComponent = (props: Props) => {
   const user = new User()
   const userStates = useSelector((state:RootState)=>state.user)
   const [cartItemsFullData, setCartItemsFullData] = useState<CartFullDataType[]>([])
+  const [cartTotalPrice, setCartTotalPrice] = useState<string>("")
   
   useEffect(()=>{
     user.getCartItemsFullData().then((data) => setCartItemsFullData(data))
+    user.getCartTotalPrice().then((data) => setCartTotalPrice(data))
   },[userStates.cart])
 
   useEffect(() => {
@@ -66,7 +68,7 @@ const CartComponent = (props: Props) => {
         <Box w="100%" h="20%" display="flex" flexDir="column" p="5px" borderTop="1px solid var(--borderColor)">
           <Box display="flex">
             <Text fontSize="14px">Total:</Text>
-            <Text fontSize="14px" fontWeight="600" ml="auto">${cartItemsFullData.reduce((acc, item) => acc + item.price, 0).toFixed(2)}</Text>
+            <Text fontSize="14px" fontWeight="600" ml="auto">${cartTotalPrice}</Text>
           </Box>
           <ButtonComponent mt="auto" w="100%" h="40px">Go to Cart</ButtonComponent>
         </Box>
@@ -89,17 +91,18 @@ const CartItem = (props:CartItemProps) => {
   
   return (
     <Box display="flex" flexDir="row" alignItems="center" w="100%" h="50px" p="5px" borderBottom="1px solid var(--borderColor)" sx={{"&:last-child": {borderBottom: 0}}}>
-      <Img src={props.product.image} w="10%" h="100%" objectFit="contain" mr="2.5%"/>
-      <Text w="45%" noOfLines={1} fontSize="12px" mr="2.5%">{props.product.title}</Text>
+      <Img src={props.product.image} w="9%" mr="1%" h="100%" objectFit="contain"/>
+      <Text w="39%" mr="1%" noOfLines={1} fontSize="12px" textAlign="left">{props.product.title}</Text>
       <NumberInputComponent
-        w="20%"
-        mr="2.5%"
+        w="19%"
+        mr="1%"
         value={props.product.quantity}
         onRemoveClick={() => user.removeFromCart(props.product.id)}
         onDecreaseClick={() => user.decreaseQuantity(props.product.id)}
         onIncreaseClick={() => user.increaseQuantity(props.product.id)}
       />
-      <Text w="20%" noOfLines={1} fontSize="12px" fontWeight="600" textAlign="right">${props.product.price}</Text>
+      <Text w="14%" mr="1%" noOfLines={1} fontSize="12px" fontWeight="400" textAlign="center">${props.product.price}</Text>
+      <Text w="14%" mr="1%" noOfLines={1} fontSize="12px" fontWeight="600" textAlign="center">${props.product.totalPrice}</Text>
     </Box>
   )
 }

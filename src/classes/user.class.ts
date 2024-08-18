@@ -41,7 +41,7 @@ export default class User {
     const requests = this.user.cart.map(async (item) => axios.get(`https://fakestoreapi.com/products/${item.id}`))
     axios.all(requests).then(axios.spread((...responses) => {
       responses.forEach((res, i) => {
-        localCartItems.push({...res.data, quantity: this.user.cart[i].quantity})
+        localCartItems.push({...res.data, quantity: this.user.cart[i].quantity, totalPrice: res.data.price * this.user.cart[i].quantity})
       })
       resolve(localCartItems)
     }))
@@ -49,7 +49,7 @@ export default class User {
   })
 
   getCartTotalPrice(){
-    return this.user.cart.reduce((acc, cartItem) => acc + cartItem.quantity, 0).toFixed(2)
+    return this.getCartItemsFullData().then((cartItems) => cartItems.reduce((acc, cartItem) => acc + cartItem.totalPrice!, 0).toFixed(2))
   }
 
   isExistInCart(productId: number){
