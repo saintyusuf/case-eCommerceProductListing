@@ -1,12 +1,15 @@
-import { Box, Button, Input, Text, useColorMode } from "@chakra-ui/react"
+import { Box, Input, useColorMode } from "@chakra-ui/react"
 import { IoCartOutline as IconCart } from "react-icons/io5"
 import { VscColorMode as IconColorMode } from "react-icons/vsc"
 import ButtonComponent from "../components/button.component"
 import LogoComponent from "../components/logo.component"
+import CartComponent from "../components/cart.component"
+import { useState } from "react"
 
 const HeaderLayout = () => {
 
   const {colorMode, toggleColorMode} = useColorMode()
+  const [isCartVisible, setIsCartVisible] = useState(false)
   
   return (
     <Box position="fixed" left="0" top="0" zIndex={100} bg="var(--bgColor)" w="100%" h="100px" borderBottom="1px" borderColor="var(--borderColor)" p="10px">
@@ -21,10 +24,13 @@ const HeaderLayout = () => {
           </Box>
         </Box>
         <Box w="25%" h="100%" display="flex" flexDir="row" justifyContent="end" alignItems="center" p="10px">
-          <Box>
-            <IconCart size={37.5}/>
+          <Box pos="relative" ml={5}>
+            <ButtonComponent id="cartButton" bg="transparent" onClick={()=>setIsCartVisible(!isCartVisible)}>
+              <IconCart size={35} pointerEvents="none"/>
+            </ButtonComponent>
+            <CartComponent isVisible={isCartVisible} setIsVisible={(val:boolean)=>setIsCartVisible(val)}/>
           </Box>
-          <ButtonComponent ml={22.5} cursor="pointer" bg="transparent" p="5px" onClick={() => toggleColorMode()}>
+          <ButtonComponent ml={5} bg="transparent" onClick={() => toggleColorMode()}>
             <IconColorMode size={32.5}/>
           </ButtonComponent>
         </Box>

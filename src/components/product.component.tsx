@@ -19,7 +19,7 @@ const ProductComponent = (props:Props) => {
           {
             isAddCartVisible ? (
               <Box h="100%" display="flex" justifyContent="center" alignItems="center" pos="absolute" top="0" left="0" w="100%" onClick={()=>setIsAddCartVisible(true)}>
-                <ButtonComponent>Add to Cart</ButtonComponent>
+                <ButtonComponent px="15px">Add to Cart</ButtonComponent>
               </Box>
             ) : (
               <Box h="100%" display="flex" flexDir="column" px="5px">
