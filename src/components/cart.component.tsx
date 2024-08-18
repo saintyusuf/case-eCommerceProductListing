@@ -5,8 +5,7 @@ import { CartFullDataType } from "../types/cart.type"
 import User from "../classes/user.class"
 import { useSelector } from "react-redux"
 import { RootState } from "../redux/store"
-import { RiDeleteBin5Line as IconTrash } from "react-icons/ri"
-import { HiPlus as IconPlus, HiMinus as IconMinus } from "react-icons/hi2"
+import NumberInputComponent from "./numberInput.component"
 
 type Props = BoxProps & {
   isVisible: boolean
@@ -92,24 +91,14 @@ const CartItem = (props:CartItemProps) => {
     <Box display="flex" flexDir="row" alignItems="center" w="100%" h="50px" p="5px" borderBottom="1px solid var(--borderColor)" sx={{"&:last-child": {borderBottom: 0}}}>
       <Img src={props.product.image} w="10%" h="100%" objectFit="contain" mr="2.5%"/>
       <Text w="45%" noOfLines={1} fontSize="12px" mr="2.5%">{props.product.title}</Text>
-      <Box w="20%" aspectRatio="3/1" display="flex" alignItems="center" mr="2.5%" p="2px" border="1px solid var(--borderColor)" borderRadius="5px">
-        <ButtonComponent w="30%" h="auto" aspectRatio="1/1" fontSize="14px" borderRadius="5px" p="0" onClick={()=>{
-          if (props.product.quantity === 1){
-            user.removeFromCart(props.product.id)
-          } else {
-            user.decreaseQuantity(props.product.id)
-          }
-        }}>
-          {
-            props.product.quantity === 1 ? <IconTrash size="12"/>
-            : <IconMinus size="12"/>
-          }
-        </ButtonComponent>
-        <Text w="40%" noOfLines={1} fontSize="12px" textAlign="center">{props.product.quantity}</Text>
-        <ButtonComponent w="30%" h="auto" aspectRatio="1/1" fontSize="14px" borderRadius="5px" p="0" onClick={()=>user.increaseQuantity(props.product.id)}>
-          <IconPlus size="12"/>
-        </ButtonComponent>
-      </Box>
+      <NumberInputComponent
+        w="20%"
+        mr="2.5%"
+        value={props.product.quantity}
+        onRemoveClick={() => user.removeFromCart(props.product.id)}
+        onDecreaseClick={() => user.decreaseQuantity(props.product.id)}
+        onIncreaseClick={() => user.increaseQuantity(props.product.id)}
+      />
       <Text w="20%" noOfLines={1} fontSize="12px" fontWeight="600" textAlign="right">${props.product.price}</Text>
     </Box>
   )
