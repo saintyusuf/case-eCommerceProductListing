@@ -1,7 +1,10 @@
 import { Box, Img, Text } from "@chakra-ui/react"
 import ProductType from "../types/product.type"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import ButtonComponent from "./button.component"
+import User from "../classes/user.class"
+import { useSelector } from "react-redux"
+import { RootState } from "../redux/store"
 
 interface Props {
   product: ProductType
@@ -9,7 +12,14 @@ interface Props {
 
 const ProductComponent = (props:Props) => {
 
+  const user = new User()
+  const userStates = useSelector((state:RootState)=>state.user)
   const [isAddCartVisible, setIsAddCartVisible] = useState<boolean>(false)
+  const [isExistInCart, setIsExistInCart] = useState<boolean>(false)
+
+  useEffect(()=>{
+    setIsExistInCart(user.isExistInCart(props.product.id))
+  },[userStates.cart])
   
   return (
     <Box key={props.product.id} w="25%" p="5px">
@@ -19,7 +29,13 @@ const ProductComponent = (props:Props) => {
           {
             isAddCartVisible ? (
               <Box h="100%" display="flex" justifyContent="center" alignItems="center" pos="absolute" top="0" left="0" w="100%" onClick={()=>setIsAddCartVisible(true)}>
-                <ButtonComponent px="15px">Add to Cart</ButtonComponent>
+                {
+                  isExistInCart ? (
+                    <ButtonComponent px="15px" onClick={()=>user.removeFromCart(props.product.id)}>Remove from Cart</ButtonComponent>
+                  ) : (
+                    <ButtonComponent px="15px" onClick={()=>user.addToCart(props.product.id)}>Add to Cart</ButtonComponent>
+                  )
+                }
               </Box>
             ) : (
               <Box h="100%" display="flex" flexDir="column" px="5px">

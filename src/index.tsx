@@ -4,6 +4,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import { HelmetProvider } from "react-helmet-async"
 import { ChakraProvider } from "@chakra-ui/react"
 import theme from "./chakra/theme"
+import { Provider as ReduxProvider } from "react-redux"
+import store from "./redux/store"
 
 // LAYOUT
 import Layout from "./layout/index.layout"
@@ -23,10 +25,12 @@ const root = ReactDOM.createRoot(
 )
 root.render(
   <React.StrictMode>
-    <HelmetProvider>
-      <ChakraProvider theme={theme}>
-        <RouterProvider router={router}/>
-      </ChakraProvider>
-    </HelmetProvider>
+    <ReduxProvider store={store}>
+      <HelmetProvider>
+        <ChakraProvider theme={theme}>
+          <RouterProvider router={router}/>
+        </ChakraProvider>
+      </HelmetProvider>
+    </ReduxProvider>
   </React.StrictMode>
 )
