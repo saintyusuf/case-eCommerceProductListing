@@ -17,7 +17,7 @@ import ProductDetailsPage from "./pages/productDetails.page"
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Layout children={<HomePage/>}/>
+    element: <Layout isSidebarVisible children={<HomePage/>}/>
   },
   {
     path: "/product/:id",

@@ -6,6 +6,7 @@ import User from "../classes/user.class"
 import { useSelector } from "react-redux"
 import { RootState } from "../redux/store"
 import NumberInputComponent from "./numberInput.component"
+import { Link } from "react-router-dom"
 
 type Props = BoxProps & {
   isVisible: boolean
@@ -91,8 +92,12 @@ const CartItem = (props:CartItemProps) => {
   
   return (
     <Box display="flex" flexDir="row" alignItems="center" w="100%" h="50px" p="5px" borderBottom="1px solid var(--borderColor)" sx={{"&:last-child": {borderBottom: 0}}}>
-      <Img src={props.product.image} w="9%" mr="1%" h="100%" objectFit="contain"/>
-      <Text w="39%" mr="1%" noOfLines={1} fontSize="12px" textAlign="left">{props.product.title}</Text>
+      <Box as={Link} to={`/product/${props.product.id}`} display="block" w="9%" mr="1%" h="100%">
+        <Img src={props.product.image} w="100%" h="100%" objectFit="contain"/>
+      </Box>
+      <Box as={Link} to={`/product/${props.product.id}`} display="block" w="39%" mr="1%">
+        <Text w="100%" noOfLines={1} fontSize="12px" textAlign="left">{props.product.title}</Text>
+      </Box>
       <NumberInputComponent
         w="19%"
         mr="1%"
