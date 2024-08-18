@@ -12,11 +12,16 @@ import Layout from "./layout/index.layout"
 
 // PAGES
 import HomePage from "./pages/home.page"
+import ProductDetailsPage from "./pages/productDetails.page"
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout children={<HomePage/>}/>
+  },
+  {
+    path: "/product/:id",
+    element: <Layout children={<ProductDetailsPage/>}/>
   }
 ])
 
