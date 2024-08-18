@@ -28,8 +28,6 @@ const userSlice = createSlice({
         if (cartItem.id === action.payload.productId){
           if(cartItem.quantity > 1){
             cartItem.quantity -= 1
-          } else {
-            state.cart = state.cart.filter((cartItem) => cartItem.id !== action.payload.productId)
           }
         }
         return cartItem
@@ -42,7 +40,7 @@ const userSlice = createSlice({
         }
         return cartItem
       })
-    },
+    }
   },
 })
 
