@@ -34,7 +34,15 @@ const userSlice = createSlice({
         }
         return cartItem
       })
-    }
+    },
+    changeQuantitiy: (state, action: PayloadAction<{productId:number, quantity:number}>) => {
+      state.cart = state.cart.map((cartItem) => {
+        if (cartItem.id === action.payload.productId){
+          cartItem.quantity = action.payload.quantity
+        }
+        return cartItem
+      })
+    },
   },
 })
 

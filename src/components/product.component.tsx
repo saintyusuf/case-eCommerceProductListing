@@ -14,7 +14,7 @@ const ProductComponent = (props:Props) => {
 
   const user = new User()
   const userStates = useSelector((state:RootState)=>state.user)
-  const [isAddCartVisible, setIsAddCartVisible] = useState<boolean>(false)
+  const [isFooterButtonsVisible, setFooterButtonVisible] = useState<boolean>(false)
   const [isExistInCart, setIsExistInCart] = useState<boolean>(false)
 
   useEffect(()=>{
@@ -23,12 +23,12 @@ const ProductComponent = (props:Props) => {
   
   return (
     <Box key={props.product.id} w="25%" p="5px">
-      <Box w="100%" h="100%" border="1px solid var(--borderColor)" borderRadius="10px" overflow="hidden" onMouseEnter={()=>setIsAddCartVisible(true)} onMouseLeave={()=>setIsAddCartVisible(false)}>
+      <Box w="100%" h="100%" border="1px solid var(--borderColor)" borderRadius="10px" overflow="hidden" onMouseEnter={()=>setFooterButtonVisible(true)} onMouseLeave={()=>setFooterButtonVisible(false)}>
         <Img src={props.product.image} w="100%" h="200px" p="15px" objectFit="contain" bg="#fff"/>
         <Box pos="relative" h="90px">
           {
-            isAddCartVisible ? (
-              <Box h="100%" display="flex" justifyContent="center" alignItems="center" pos="absolute" top="0" left="0" w="100%" onClick={()=>setIsAddCartVisible(true)}>
+            isFooterButtonsVisible ? (
+              <Box h="100%" display="flex" justifyContent="center" alignItems="center" pos="absolute" top="0" left="0" w="100%">
                 {
                   isExistInCart ? (
                     <ButtonComponent px="15px" onClick={()=>user.removeFromCart(props.product.id)}>Remove from Cart</ButtonComponent>
