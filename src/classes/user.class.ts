@@ -1,4 +1,6 @@
+import axios from "axios"
 import store from "../redux/store"
+import CartType, { CartFullDataType } from "../types/cart.type"
 import UserType from "../types/user.type"
 
 export default class User {
@@ -29,12 +31,25 @@ export default class User {
     store.dispatch({type: "user/changeQuantity", payload: {productId, quantity}})
   }
 
-  getCart(){
+  getCartItems():CartType[]{
     return this.user.cart
   }
 
+  public getCartItemsFullData = async ():Promise<CartFullDataType[]> => new Promise((resolve, reject) => {
+    const localCartItems:CartFullDataType[] = []
+    
+    const requests = this.user.cart.map(async (item) => axios.get(`https://fakestoreapi.com/products/${item.id}`))
+    axios.all(requests).then(axios.spread((...responses) => {
+      responses.forEach((res, i) => {
+        localCartItems.push({...res.data, quantity: this.user.cart[i].quantity})
+      })
+      resolve(localCartItems)
+    }))
+    
+  })
+
   getCartTotalPrice(){
-    return this.user.cart.reduce((acc, cartItem) => acc + cartItem.quantity, 0)
+    return this.user.cart.reduce((acc, cartItem) => acc + cartItem.quantity, 0).toFixed(2)
   }
 
   isExistInCart(productId: number){

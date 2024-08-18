@@ -15,11 +15,11 @@ const HeaderLayout = () => {
 
   const user = new User()
   const userStates = useSelector((state:RootState)=>state.user)
-  const [cartItemsLength, setCartItemsLength] = useState<number>(user.getCart().length)
+  const [cartItemsLength, setCartItemsLength] = useState<number>(user.getCartItems().length)
   const [isCartVisible, setIsCartVisible] = useState(false)
 
   useEffect(()=>{
-    setCartItemsLength(user.getCart().length)
+    setCartItemsLength(user.getCartItems().length)
   },[userStates.cart])
   
   return (
@@ -40,7 +40,7 @@ const HeaderLayout = () => {
               <IconCart size={35} pointerEvents="none"/>
               {
                 cartItemsLength > 0 && (
-                  <Box pointerEvents="none" pos="absolute" top="-5px" right="-5px" bg="red" borderRadius="5px" w="20px" h="20px" display="flex" justifyContent="center" alignItems="center">
+                  <Box pointerEvents="none" pos="absolute" top="-5px" right="-5px" bg="red" borderRadius="100%" w="20px" h="20px" display="flex" justifyContent="center" alignItems="center">
                     <Text fontSize="12px" color="white">{cartItemsLength}</Text>
                   </Box>
                 )
