@@ -6,6 +6,7 @@ import SidebarLayout from "./sidebar.layout"
 import { ToastContainer } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 import TopbarLayout from "./topbar.layout"
+import ScrollToTopComponent from "../components/scrollToTop.component"
 
 interface Props {
   children: React.ReactNode
@@ -25,6 +26,7 @@ const Layout = (props: Props) => {
         </Box>
       </Box>
       <FooterLayout/>
+      <ScrollToTopComponent/>
       <ToastContainer pauseOnHover={false}/>
     </Box>
   )

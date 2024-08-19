@@ -1,6 +1,6 @@
-import { Box, Select } from '@chakra-ui/react'
-import { useEffect, useState } from 'react'
-import { useSearchParams } from 'react-router-dom'
+import { Box, Select } from "@chakra-ui/react"
+import { useEffect, useState } from "react"
+import { useSearchParams } from "react-router-dom"
 
 export type SortBy = "price" | "title" | ""
 export type SortOrder = "asc" | "desc" | ""
