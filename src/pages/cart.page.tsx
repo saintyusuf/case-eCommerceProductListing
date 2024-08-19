@@ -23,11 +23,11 @@ const CartPage = () => {
   },[userStates.cart])
   
   return (
-    <Box display="flex" h="100%">
+    <Box display="flex" h="100%" >
       <Box display="flex" flexDir="column" w="75%" p="10px">
         <CartRows cartItemsFullData={cartItemsFullData} rowProps={{h: "100px"}}/>
       </Box>
-      <Box w="25%" border="1px solid var(--borderColor)" borderRadius="10px" p="10px">
+      <Box pos="sticky" top="110px" w="25%" h="50%" border="1px solid var(--borderColor)" borderRadius="10px" p="10px">
         <Box display="flex">
           <Text fontSize="20px" mr="auto" mb="10px">Total:</Text>
           <Text fontSize="20px" fontWeight="600">${cartTotalPrice}</Text>

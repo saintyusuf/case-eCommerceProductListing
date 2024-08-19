@@ -10,7 +10,7 @@ const ProductsComponent = () => {
 
   const [products, setProducts] = useState<ProductType[]>([])
   const [loading, setLoading] = useState<boolean>(false)
-  const [limit, setLimit] = useState<number>(16)
+  const [limit, setLimit] = useState<number>(20)
   const [more, setMore] = useState<boolean>(true)
 
   function getProducts(){
@@ -78,6 +78,7 @@ const ProductsComponent = () => {
           <LoadingComponent/>
         </Box>
       }
+      style={{overflow: "hidden"}}
     >
       <Box display="flex" flexDir="row" flexWrap="wrap">
         {products.map((product:ProductType)=>{
