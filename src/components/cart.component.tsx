@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react"
-import { Box, BoxProps, Img, Text } from "@chakra-ui/react"
+import { Box, BoxProps, Img, Text, useMediaQuery } from "@chakra-ui/react"
 import ButtonComponent from "./button.component"
 import { CartFullDataType } from "../types/cart.type"
 import User from "../classes/user.class"
@@ -7,6 +7,7 @@ import { useSelector } from "react-redux"
 import { RootState } from "../redux/store"
 import NumberInputComponent from "./numberInput.component"
 import { Link, useNavigate } from "react-router-dom"
+import { MdClose as IconClose } from "react-icons/md"
 
 type Props = {
   isVisible: boolean
@@ -14,6 +15,8 @@ type Props = {
 } & BoxProps
 
 const CartComponent = (props: Props) => {
+
+  const [isMobile] = useMediaQuery("(max-width: 900px)")
 
   const refCart = useRef<HTMLDivElement>(null)
   const navigate = useNavigate()
@@ -54,7 +57,16 @@ const CartComponent = (props: Props) => {
   if (props.isVisible){
     return (
       <Box ref={refCart} overflow="hidden" w="100%" h="100%" bg="var(--bgColor)" {...props}>
-        <CartRows h="80%" cartItemsFullData={cartItemsFullData}/>
+        {
+          isMobile && (
+            <Box p="15px" h="10%">
+              <ButtonComponent display="flex" justifyContent="center" alignItems="center" bg="transparent" w="30px" h="30px" mb="20px" pl="0" onClick={()=>props.setIsVisible!(false)}>
+                <Box as={IconClose} fontSize="20px"/>
+              </ButtonComponent>
+            </Box>
+          )
+        }
+        <CartRows h={{mobile: "70%", desktop: "80%"}} cartItemsFullData={cartItemsFullData}/>
         <Box w="100%" h="20%" display="flex" flexDir="column" p="5px" borderTop="1px solid var(--borderColor)">
           <Box display="flex">
             <Text fontSize="14px">Total:</Text>

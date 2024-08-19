@@ -23,8 +23,6 @@ const CartPage = () => {
     user.getCartItemsFullData().then((data) => setCartItemsFullData(data))
     user.getCartTotalPrice().then((data) => setCartTotalPrice(data))
   },[userStates.cart])
-
-  console.log(cartItemsFullData.length)
   
   return (
     <>
