@@ -53,7 +53,7 @@ const CartComponent = (props: Props) => {
 
   if (props.isVisible){
     return (
-      <Box ref={refCart} overflow="hidden" pos="absolute" right="0" top="50px" w="400px" h="400px" bg="var(--bgColor)" border="1px solid var(--borderColor)" borderRadius="10px" {...props}>
+      <Box ref={refCart} overflow="hidden" w="100%" h="100%" bg="var(--bgColor)" {...props}>
         <CartRows h="80%" cartItemsFullData={cartItemsFullData}/>
         <Box w="100%" h="20%" display="flex" flexDir="column" p="5px" borderTop="1px solid var(--borderColor)">
           <Box display="flex">

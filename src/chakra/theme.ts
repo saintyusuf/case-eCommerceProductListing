@@ -27,6 +27,7 @@ const theme = extendTheme({
         "--borderColor": mode("#ddd", "#222")(props),
         "--bgColor": mode("#fff", "#000")(props),
         "--textColor": mode("#000", "#fff")(props),
+        "-webkit-tap-highlight-color": "transparent",
       }
     }),
   },
@@ -40,7 +41,7 @@ const theme = extendTheme({
   },
   breakpoints: {
     mobile: "0px",
-    desktop: "800px"
+    desktop: "900px"
   }
 })
 
