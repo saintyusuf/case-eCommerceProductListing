@@ -15,7 +15,7 @@ const TopbarLayout = () => {
   const app = new App()
   const appStates = useSelector((state:RootState)=>state.app)
 
-  const [isMobile] = useMediaQuery("(max-width: 900px)")
+  const [isMobile] = useMediaQuery("(max-width: 899px)")
   const [isSidebarVisible, setIsSidebarVisible] = useState(isMobile ? app.getSidebarVisibility() : true)
 
   useEffect(()=>{

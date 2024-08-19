@@ -16,7 +16,7 @@ interface Props {
 
 const Layout = (props: Props) => {
 
-  const [isMobile] = useMediaQuery("(max-width: 900px)")
+  const [isMobile] = useMediaQuery("(max-width: 899px)")
   
   return (
     <Box display="flex" flexDir="column" w="100%" h="100%">

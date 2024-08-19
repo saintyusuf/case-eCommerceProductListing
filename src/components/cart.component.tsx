@@ -16,7 +16,7 @@ type Props = {
 
 const CartComponent = (props: Props) => {
 
-  const [isMobile] = useMediaQuery("(max-width: 900px)")
+  const [isMobile] = useMediaQuery("(max-width: 899px)")
 
   const refCart = useRef<HTMLDivElement>(null)
   const navigate = useNavigate()
@@ -59,15 +59,15 @@ const CartComponent = (props: Props) => {
       <Box ref={refCart} overflow="hidden" w="100%" h="100%" bg="var(--bgColor)" {...props}>
         {
           isMobile && (
-            <Box p="15px" h="10%">
-              <ButtonComponent display="flex" justifyContent="center" alignItems="center" bg="transparent" w="30px" h="30px" mb="20px" pl="0" onClick={()=>props.setIsVisible!(false)}>
+            <Box p="15px" h="50px">
+              <ButtonComponent display="flex" justifyContent="center" alignItems="center" bg="transparent" w="30px" h="30px" onClick={()=>props.setIsVisible!(false)}>
                 <Box as={IconClose} fontSize="20px"/>
               </ButtonComponent>
             </Box>
           )
         }
-        <CartRows h={{mobile: "70%", desktop: "80%"}} cartItemsFullData={cartItemsFullData}/>
-        <Box w="100%" h="20%" display="flex" flexDir="column" p="5px" borderTop="1px solid var(--borderColor)">
+        <CartRows h={{mobile: "calc(100% - (80px + 50px))", desktop: "calc(100% - 80px)"}} cartItemsFullData={cartItemsFullData}/>
+        <Box w="100%" h="80px" display="flex" flexDir="column" p="5px" borderTop="1px solid var(--borderColor)">
           <Box display="flex">
             <Text fontSize="14px">Total:</Text>
             <Text fontSize="14px" fontWeight="600" ml="auto">${cartTotalPrice}</Text>

@@ -12,7 +12,7 @@ const SidebarLayout = () => {
   const app = new App()
   const appStates = useSelector((state:RootState)=>state.app)
 
-  const [isMobile] = useMediaQuery("(max-width: 900px)")
+  const [isMobile] = useMediaQuery("(max-width: 899px)")
   const [isSidebarVisible, setIsSidebarVisible] = useState(isMobile ? app.getSidebarVisibility() : true)
 
   useEffect(()=>{
@@ -44,9 +44,11 @@ const SidebarLayout = () => {
 
         {
           isMobile && (
-            <ButtonComponent display="flex" justifyContent="center" alignItems="center" bg="transparent" w="30px" h="30px" mb="20px" pl="0" onClick={()=>app.toggleSidebar()}>
-              <Box as={IconClose} fontSize="20px"/>
-            </ButtonComponent>
+            <Box h="50px" mr="auto">
+              <ButtonComponent display="flex" justifyContent="center" alignItems="center" bg="transparent" w="30px" h="30px" onClick={()=>app.toggleSidebar()}>
+                <Box as={IconClose} fontSize="20px"/>
+              </ButtonComponent>
+            </Box>
           )
         }
 

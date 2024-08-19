@@ -16,7 +16,7 @@ const HeaderLayout = () => {
 
   const appStates = useSelector((state:RootState)=>state.app)
 
-  const [isMobile] = useMediaQuery("(max-width: 900px)")
+  const [isMobile] = useMediaQuery("(max-width: 899px)")
   const [isSearchVisible, setIsSearchVisible] = useState(isMobile ? false : true)
 
   useEffect(()=>{
@@ -61,9 +61,11 @@ const HeaderLayout = () => {
         <Box pos={{mobile: "absolute", desktop: "relative"}} left={{mobile: "0", desktop: "initial"}} top={{mobile: "0", desktop: "initial"}} w={{mobile: "100%", desktop: "50%"}} h={{mobile: "100vh", desktop: "100%"}} bg={{mobile: "var(--bgColor)", desktop: "initial"}} borderBottom={{mobile: "1px solid var(--borderColor)", desktop: "initial"}} display={{mobile: isSearchVisible ? "flex" : "none", desktop: "flex"}} flexDir="column" justifyContent="start" alignItems="center" p={{mobile: "15px", desktop: "10px"}} zIndex={100}>
           {
             isMobile && (
-              <ButtonComponent display="flex" justifyContent="center" alignItems="center" bg="transparent" w="30px" h="30px" mb="20px" mr="auto" pl="0" onClick={()=>setIsSearchVisible(!isSearchVisible)}>
-                <Box as={IconClose} fontSize="20px"/>
-              </ButtonComponent>
+              <Box h="50px" mr="auto">
+                <ButtonComponent display="flex" justifyContent="center" alignItems="center" bg="transparent" w="30px" h="30px" onClick={()=>setIsSearchVisible(!isSearchVisible)}>
+                  <Box as={IconClose} fontSize="20px"/>
+                </ButtonComponent>
+              </Box>
             )
           }
 
