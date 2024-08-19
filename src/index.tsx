@@ -1,6 +1,6 @@
 import React from "react"
 import ReactDOM from "react-dom/client"
-import { createBrowserRouter, RouterProvider } from "react-router-dom"
+import { createBrowserRouter, Navigate, RouterProvider } from "react-router-dom"
 import { HelmetProvider } from "react-helmet-async"
 import { ChakraProvider } from "@chakra-ui/react"
 import theme from "./chakra/theme"
@@ -19,7 +19,7 @@ import CheckoutPage from "./pages/checkout.page"
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Layout isSidebarVisible children={<HomePage/>}/>
+    element: <Layout isSidebarVisible isTopbarVisible children={<HomePage/>}/>
   },
   {
     path: "/product/:id",
@@ -32,6 +32,10 @@ const router = createBrowserRouter([
   {
     path: "/checkout",
     element: <Layout children={<CheckoutPage/>}/>
+  },
+  {
+    path: "*",
+    element: <Navigate to="/"/>
   }
 ])
 

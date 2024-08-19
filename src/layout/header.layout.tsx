@@ -8,11 +8,14 @@ import { useEffect, useState } from "react"
 import User from "../classes/user.class"
 import { useSelector } from "react-redux"
 import { RootState } from "../redux/store"
+import { useSearchParams } from "react-router-dom"
 
 const HeaderLayout = () => {
 
   const {colorMode, toggleColorMode} = useColorMode()
+  const [searchParams, setSearchParams] = useSearchParams()
 
+  const [search, setSearch] = useState<string>(searchParams.get("search") || "")
   const user = new User()
   const userStates = useSelector((state:RootState)=>state.user)
   const [cartItemsLength, setCartItemsLength] = useState<number>(user.getCartItems().length)
@@ -21,7 +24,17 @@ const HeaderLayout = () => {
   useEffect(()=>{
     setCartItemsLength(user.getCartItems().length)
   },[userStates.cart])
-  
+
+  function updateSearch(){
+    if(search === "") return setSearchParams(searchParams)
+    searchParams.set("search", search)
+    setSearchParams(searchParams)
+  }
+
+  useEffect(()=>{
+    setSearch(searchParams.get("search") || "")
+  },[searchParams])
+
   return (
     <Box position="fixed" left="0" top="0" zIndex={100} bg="var(--bgColor)" w="100%" h="100px" borderBottom="1px" borderColor="var(--borderColor)" p="10px">
       <Box display="flex" flexDir="row" w="100%" h="100%" maxW="1440px" margin="auto">
@@ -30,8 +43,8 @@ const HeaderLayout = () => {
         </Box>
         <Box w="50%" h="100%" display="flex" flexDir="row" justifyContent="start" alignItems="center" p="10px">
           <Box w="100%" h="55px" border="1px" borderColor="var(--borderColor)" borderRadius="25px" display="flex" flexDir="row" p="5px">
-            <Input placeholder="Search Product" w="80%" h="100%" px="20px" border="0" focusBorderColor="transparent" />
-            <ButtonComponent w="20%" h="100%" bg="transparent" borderRadius="25px">Search</ButtonComponent>
+            <Input placeholder="Search Product" w="80%" h="100%" px="20px" border="0" focusBorderColor="transparent" value={search} onChange={(e)=>setSearch(e.target.value)} onKeyDown={(e)=>e.key === "Enter" && updateSearch()} />
+            <ButtonComponent w="20%" h="100%" bg="transparent" borderRadius="25px" onClick={()=>updateSearch()} isDisabled={!search}>Search</ButtonComponent>
           </Box>
         </Box>
         <Box w="25%" h="100%" display="flex" flexDir="row" justifyContent="end" alignItems="center" p="10px">
