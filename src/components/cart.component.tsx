@@ -78,6 +78,7 @@ const CartComponent = (props: Props) => {
           <ButtonComponent mt="auto" w="100%" h="40px" onClick={()=>{
             navigate("/cart")
             props.setIsVisible!(false)
+            document.body.classList.remove("no-scroll")
           }}>Go to Cart</ButtonComponent>
         </Box>
       </Box>
