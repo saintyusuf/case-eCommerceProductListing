@@ -60,7 +60,10 @@ const CartComponent = (props: Props) => {
         {
           isMobile && (
             <Box p="15px" h="50px">
-              <ButtonComponent display="flex" justifyContent="center" alignItems="center" bg="transparent" w="30px" h="30px" onClick={()=>props.setIsVisible!(false)}>
+              <ButtonComponent display="flex" justifyContent="center" alignItems="center" bg="transparent" w="30px" h="30px" onClick={()=>{
+                props.setIsVisible!(false)
+                document.body.classList.remove("no-scroll")
+              }}>
                 <Box as={IconClose} fontSize="20px"/>
               </ButtonComponent>
             </Box>

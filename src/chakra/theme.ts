@@ -28,6 +28,9 @@ const theme = extendTheme({
         "--bgColor": mode("#fff", "#000")(props),
         "--textColor": mode("#000", "#fff")(props),
         "WebkitTapHighlightColor": "transparent",
+        "&.no-scroll": {
+          overflow: "hidden"
+        }
       }
     }),
   },

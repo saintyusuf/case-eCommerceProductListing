@@ -62,7 +62,10 @@ const HeaderLayout = () => {
           {
             isMobile && (
               <Box h="50px" mr="auto">
-                <ButtonComponent display="flex" justifyContent="center" alignItems="center" bg="transparent" w="30px" h="30px" onClick={()=>setIsSearchVisible(!isSearchVisible)}>
+                <ButtonComponent display="flex" justifyContent="center" alignItems="center" bg="transparent" w="30px" h="30px" onClick={()=>{
+                  setIsSearchVisible(!isSearchVisible)
+                  document.body.classList.remove("no-scroll")
+                }}>
                   <Box as={IconClose} fontSize="20px"/>
                 </ButtonComponent>
               </Box>
@@ -81,14 +84,20 @@ const HeaderLayout = () => {
         <Box w={{mobile: "fit-content", desktop: "25%"}} h="100%" display="flex" flexDir="row" justifyContent="end" alignItems="center" p={{mobile: "2.5px", desktop: "10px"}} ml={{mobile: "auto", desktop: "initial"}}>
           {
             isMobile && (
-              <ButtonComponent ml={{mobile: "5px", desktop: "5px"}} bg="transparent" w={{mobile: "30px", desktop: "40px"}} h="auto" aspectRatio="1/1" onClick={()=>setIsSearchVisible(!isSearchVisible)}>
+              <ButtonComponent ml={{mobile: "5px", desktop: "5px"}} bg="transparent" w={{mobile: "30px", desktop: "40px"}} h="auto" aspectRatio="1/1" onClick={()=>{
+                setIsSearchVisible(!isSearchVisible)
+                document.body.classList.add("no-scroll")
+              }}>
                 <Box as={IconSearch} fontSize={{mobile: 22, desktop: 24}}/>
               </ButtonComponent>
             )
           }
 
           <Box pos="relative" ml={{mobile: "5px", desktop: "5px"}}>
-            <ButtonComponent id="cartButton" bg="transparent" w={{mobile: "30px", desktop: "40px"}} h="auto" aspectRatio="1/1" onClick={()=>setIsCartVisible(!isCartVisible)}>
+            <ButtonComponent id="cartButton" bg="transparent" w={{mobile: "30px", desktop: "40px"}} h="auto" aspectRatio="1/1" onClick={()=>{
+              setIsCartVisible(!isCartVisible)
+              document.body.classList.add("no-scroll")
+            }}>
               <Box as={IconCart} fontSize={{mobile: 22, desktop: 26}} pointerEvents="none"/>
               {
                 cartItemsLength > 0 && (

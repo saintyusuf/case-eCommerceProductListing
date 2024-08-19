@@ -45,7 +45,10 @@ const SidebarLayout = () => {
         {
           isMobile && (
             <Box h="50px" mr="auto">
-              <ButtonComponent display="flex" justifyContent="center" alignItems="center" bg="transparent" w="30px" h="30px" onClick={()=>app.toggleSidebar()}>
+              <ButtonComponent display="flex" justifyContent="center" alignItems="center" bg="transparent" w="30px" h="30px" onClick={()=>{
+                app.toggleSidebar()
+                document.body.classList.remove("no-scroll")
+              }}>
                 <Box as={IconClose} fontSize="20px"/>
               </ButtonComponent>
             </Box>

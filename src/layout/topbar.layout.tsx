@@ -52,7 +52,10 @@ const TopbarLayout = () => {
     <Box w="100%" display="flex" flexDir="row" justifyContent="end" mb="5px" pr="5px">
       {
         isMobile && (
-          <ButtonComponent mr="auto" bg="transparent" w="30px" h="30px" onClick={()=>app.toggleSidebar()}>
+          <ButtonComponent mr="auto" bg="transparent" w="30px" h="30px" onClick={()=>{
+            app.toggleSidebar()
+            document.body.classList.add("no-scroll")
+          }}>
             <Box as={IconFilter} fontSize={{mobile: 18, desktop: 24}}/>
           </ButtonComponent>
         )

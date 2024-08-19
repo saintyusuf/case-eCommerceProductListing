@@ -21,8 +21,8 @@ const ScrollToTopComponent = () => {
   
   if(isVisible){
     return (
-      <ButtonComponent pos="fixed" bottom="20px" right="20px" w="50px" h="50px" bg="var(--bgColor)" border="1px solid var(--borderColor)" borderRadius="100%" display="flex" justifyContent="center" alignItems="center" cursor="pointer" onClick={()=>window.scrollTo({top: 0, behavior: "smooth"})}>
-        <IconUp size="30"/>
+      <ButtonComponent pos="fixed" bottom={{mobile: "10px", desktop: "20px"}} right={{mobile: "10px", desktop: "20px"}} w={{mobile: "40px", desktop: "50px"}} h={{mobile: "40px", desktop: "50px"}} bg="var(--bgColor)" border="1px solid var(--borderColor)" borderRadius="100%" display="flex" justifyContent="center" alignItems="center" cursor="pointer" onClick={()=>window.scrollTo({top: 0, behavior: "smooth"})}>
+        <Box as={IconUp} fontSize={{mobile: "20px", desktop: "30px"}}/>
       </ButtonComponent>
     )
   } else {
