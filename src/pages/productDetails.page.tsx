@@ -9,6 +9,10 @@ import { useSelector } from "react-redux"
 import { RootState } from "../redux/store"
 import LoadingComponent from "../components/loading.component"
 import { toast } from "react-toastify"
+import { Swiper, SwiperSlide } from "swiper/react"
+import { Pagination } from "swiper/modules"
+import "swiper/css"
+import "swiper/css/pagination"
 
 const ProductDetailsPage = () => {
 
@@ -23,8 +27,9 @@ const ProductDetailsPage = () => {
 
   function getProduct(){
     setIsLoading(true)
-    axios.get(`https://dummyjson.com/products/${id}`).then((res:any)=>{
+    axios.get(`https://dummyjson.com/products/${id}?select=id,title,price,images,stock,description`).then((res:any)=>{
       setProduct(res.data)           
+      console.log(res.data)
     }).catch(()=>{
       toast("Product not found")
       navigate("/")
@@ -51,7 +56,24 @@ const ProductDetailsPage = () => {
         ) : (
           <>
             <Box w="50%" h="fit-content" aspectRatio="1/1" p="25px" bg="#fff">
-              <Img src={product?.images[0]} w="100%" h="100%" objectFit="contain"/>
+              <Box as={Swiper}
+                slidesPerView={1}
+                modules={[Pagination]}
+                pagination={{ clickable: true }}
+                sx={{
+                  "&": {
+                    h: "100%!important"
+                  }
+                }}
+              >
+                {
+                  product?.images.map((image:string,index:number)=>(
+                    <SwiperSlide key={index}>
+                      <Img src={image} w="100%" h="100%" objectFit="contain"/>
+                    </SwiperSlide>
+                  ))
+                }
+              </Box>
             </Box>
             <Box w="50%" p="25px">
               <Text fontSize="30px" fontWeight="600" mb="20px">{product?.title}</Text>

@@ -10,7 +10,6 @@ const ScrollToTopComponent = () => {
   useEffect(()=>{
     
     addEventListener("scroll", ()=>{
-      console.log(window.scrollY)
       if(window.scrollY > 100){
         setIsVisible(true)
       } else {
