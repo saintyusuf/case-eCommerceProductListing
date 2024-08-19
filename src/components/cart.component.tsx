@@ -93,7 +93,7 @@ const CartItem = (props:CartItemProps) => {
   return (
     <Box display="flex" flexDir="row" alignItems="center" w="100%" h="50px" p="5px" borderBottom="1px solid var(--borderColor)" sx={{"&:last-child": {borderBottom: 0}}}>
       <Box as={Link} to={`/product/${props.product.id}`} display="block" w="9%" mr="1%" h="100%">
-        <Img src={props.product.image} w="100%" h="100%" objectFit="contain"/>
+        <Img src={props.product.images[0]} w="100%" h="100%" objectFit="contain"/>
       </Box>
       <Box as={Link} to={`/product/${props.product.id}`} display="block" w="39%" mr="1%">
         <Text w="100%" noOfLines={1} fontSize="12px" textAlign="left">{props.product.title}</Text>

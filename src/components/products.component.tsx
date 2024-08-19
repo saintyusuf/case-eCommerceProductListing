@@ -1,34 +1,62 @@
 import { useEffect, useState } from "react"
 import axios from "axios"
 import ProductType from "../types/product.type"
-import { Box, Img, Text } from "@chakra-ui/react"
+import { Box } from "@chakra-ui/react"
 import ProductComponent from "./product.component"
 import LoadingComponent from "./loading.component"
+import InfiniteScroll from "react-infinite-scroll-component"
 
 const ProductsComponent = () => {
 
   const [products, setProducts] = useState<ProductType[]>([])
   const [loading, setLoading] = useState<boolean>(false)
+  const [limit, setLimit] = useState<number>(16)
+  const [more, setMore] = useState<boolean>(true)
 
   function getProducts(){
     setLoading(true)
-    axios.get("https://fakestoreapi.com/products").then((res:any)=>{
+    axios.get(`https://dummyjson.com/products?limit=${limit}`).then((res:any)=>{
       setProducts(
-        res.data.map((resData:any)=>{
+        res.data.products.map((resData:any)=>{
           return {
             id: resData.id,
             title: resData.title,
-            price: resData.price,
             description: resData.description,
             category: resData.category,
-            image: resData.image,
-            rating: {
-              rate: resData.rating.rate,
-              count: resData.rating.count
-            }
+            price: resData.price,
+            discountPercentage: resData.discountPercentage,
+            rating: resData.rating,
+            stock: resData.stock,
+            tags: resData.tags,
+            brand: resData.brand,
+            sku: resData.sku,
+            weight: resData.weight,
+            dimensions: {
+              width: resData.dimensions.width,
+              height: resData.dimensions.height,
+              depth: resData.dimensions.depth
+            },
+            warrantyInformation: resData.warrantyInformation,
+            shippingInformation: resData.shippingInformation,
+            availabilityStatus: resData.availabilityStatus,
+            reviews: resData.reviews,
+            returnPolicy: resData.returnPolicy,
+            minimumOrderQuantity: resData.minimumOrderQuantity,
+            meta: {
+              createdAt: resData.meta.createdAt,
+              updatedAt: resData.meta.updatedAt,
+              barcode: resData.meta.barcode,
+              qrCode: resData.meta.qrCode
+            },
+            images: resData.images,
+            thumbnail: resData.thumbnail
           }
         })
       )
+      if(res.data.limit === res.data.total){
+        setMore(false)
+      }
+      setLimit(limit+4)
     }).catch((err:any)=>{
       console.log(err)
     }).finally(()=>{
@@ -41,7 +69,16 @@ const ProductsComponent = () => {
   },[])
   
   return (
-    products && !loading ? (
+    <InfiniteScroll
+      dataLength={products.length}
+      next={getProducts}
+      hasMore={more}
+      loader={
+        <Box display="flex" justifyContent="center" alignItems="center" w="100%" h="100%">
+          <LoadingComponent/>
+        </Box>
+      }
+    >
       <Box display="flex" flexDir="row" flexWrap="wrap">
         {products.map((product:ProductType)=>{
           return (
@@ -49,11 +86,7 @@ const ProductsComponent = () => {
           )
         })}
       </Box>
-    ) : (
-      <Box display="flex" justifyContent="center" alignItems="center" w="100%" h="100%">
-        <LoadingComponent/>
-      </Box>
-    )
+    </InfiniteScroll>
   )
 }
 

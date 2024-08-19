@@ -23,7 +23,7 @@ const ProductDetailsPage = () => {
 
   function getProduct(){
     setIsLoading(true)
-    axios.get(`https://fakestoreapi.com/products/${id}`).then((res:any)=>{
+    axios.get(`https://dummyjson.com/products/${id}`).then((res:any)=>{
       
       if(res.data){
         setProduct(res.data)     
@@ -55,11 +55,10 @@ const ProductDetailsPage = () => {
         ) : (
           <>
             <Box w="50%" h="fit-content" aspectRatio="1/1" p="25px" bg="#fff">
-              <Img src={product?.image} w="100%" h="100%" objectFit="contain"/>
+              <Img src={product?.images[0]} w="100%" h="100%" objectFit="contain"/>
             </Box>
             <Box w="50%" p="25px">
               <Text fontSize="30px" fontWeight="600" mb="20px">{product?.title}</Text>
-              <Text fontSize="20px" fontWeight="500" mb="20px">Rating: {product?.rating?.rate}</Text>
               {
                 isExistInCart ? (
                   <ButtonComponent children="Remove from Cart" fontSize="20px" p="20px" mb="20px" onClick={()=>user.removeFromCart(Number(id))}/>
