@@ -35,7 +35,7 @@ export default class User {
     return this.user.cart
   }
 
-  public getCartItemsFullData = async ():Promise<CartFullDataType[]> => new Promise((resolve, reject) => {
+  getCartItemsFullData = ():Promise<CartFullDataType[]> => new Promise((resolve, reject) => {
     const localCartItems:CartFullDataType[] = []
     
     const requests = this.user.cart.map(async (item) => axios.get(`https://dummyjson.com/products/${item.id}`))
@@ -54,6 +54,10 @@ export default class User {
 
   isExistInCart(productId: number){
     return this.user.cart.some((cartItem) => cartItem.id === productId)
+  }
+
+  clearCart(){
+    store.dispatch({type: "user/clearCart"})
   }
   
 }

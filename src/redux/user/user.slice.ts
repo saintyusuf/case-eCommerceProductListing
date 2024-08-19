@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import UserType from "../../types/user.type"
+import { clear } from "console"
 
 const initialState:UserType = {
   cart: []
@@ -40,6 +41,9 @@ const userSlice = createSlice({
         }
         return cartItem
       })
+    },
+    clearCart: (state) => {
+      state.cart = []
     }
   },
 })

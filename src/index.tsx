@@ -14,6 +14,7 @@ import Layout from "./layout/index.layout"
 import HomePage from "./pages/home.page"
 import ProductDetailsPage from "./pages/productDetails.page"
 import CartPage from "./pages/cart.page"
+import CheckoutPage from "./pages/checkout.page"
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
   {
     path: "/cart",
     element: <Layout children={<CartPage/>}/>
+  },
+  {
+    path: "/checkout",
+    element: <Layout children={<CheckoutPage/>}/>
   }
 ])
 

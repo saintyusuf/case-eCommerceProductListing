@@ -7,6 +7,7 @@ import { RootState } from "../redux/store"
 import { useNavigate } from "react-router-dom"
 import { CartRows } from "../components/cart.component"
 import ButtonComponent from "../components/button.component"
+import { Helmet } from "react-helmet-async"
 
 const CartPage = () => {
 
@@ -23,18 +24,23 @@ const CartPage = () => {
   },[userStates.cart])
   
   return (
-    <Box display="flex" h="100%" >
-      <Box display="flex" flexDir="column" w="75%" p="10px">
-        <CartRows cartItemsFullData={cartItemsFullData} rowProps={{h: "100px"}}/>
-      </Box>
-      <Box pos="sticky" top="110px" w="25%" h="50%" border="1px solid var(--borderColor)" borderRadius="10px" p="10px">
-        <Box display="flex">
-          <Text fontSize="20px" mr="auto" mb="10px">Total:</Text>
-          <Text fontSize="20px" fontWeight="600">${cartTotalPrice}</Text>
+    <>
+      <Helmet>
+        <title>Cart</title>
+      </Helmet>
+      <Box display="flex" h="100%">
+        <Box display="flex" flexDir="column" w="75%" p="10px">
+          <CartRows cartItemsFullData={cartItemsFullData} rowProps={{h: "100px"}}/>
         </Box>
-        <ButtonComponent onClick={()=>navigate("/checkout")} w="100%">Checkout</ButtonComponent>
+        <Box pos="sticky" top="110px" w="25%" h="50%" border="1px solid var(--borderColor)" borderRadius="10px" p="10px">
+          <Box display="flex">
+            <Text fontSize="20px" mr="auto" mb="10px">Total:</Text>
+            <Text fontSize="20px" fontWeight="600">${cartTotalPrice}</Text>
+          </Box>
+          <ButtonComponent onClick={()=>navigate("/checkout")} w="100%">Checkout</ButtonComponent>
+        </Box>
       </Box>
-    </Box>
+    </>
   )
 }
 
