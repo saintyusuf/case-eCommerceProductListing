@@ -1,10 +1,12 @@
-import { Box, Text } from "@chakra-ui/react"
+import { Box, Text, useMediaQuery } from "@chakra-ui/react"
 import Lottie from "react-lottie"
 import AnimationSuccess from "../assets/animations/success.json"
 import { Helmet } from "react-helmet-async"
 import User from "../classes/user.class"
 
 const CheckoutPage = () => {
+
+  const [isMobile] = useMediaQuery("(max-width: 899px)")
 
   const user = new User()
   user.clearCart()
@@ -21,11 +23,11 @@ const CheckoutPage = () => {
         <title>Checkout</title>
       </Helmet>
       <Box w="100%" h="100%" display="flex" flexDir="column" justifyContent="center" alignItems="center">
-        <Text fontSize="40px" fontWeight="600" mb="20px">Checkout Successful!</Text>
+        <Text fontSize={{mobile: "30px", desktop: "40px"}} fontWeight="600" mb="20px">Checkout Successful!</Text>
         <Lottie
           options={animationOptions}
-          height={300}
-          width={300}
+          height={isMobile ? 150 : 300}
+          width={isMobile ? 150 : 300}
           isClickToPauseDisabled
         />
       </Box>
