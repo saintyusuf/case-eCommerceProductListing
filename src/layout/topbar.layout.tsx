@@ -34,7 +34,7 @@ const TopbarLayout = () => {
   },[searchParam])
   
   return (
-    <Box w="100%" display="flex" flexDir="row" justifyContent="end" mb="5px">
+    <Box w="100%" display="flex" flexDir="row" justifyContent="end" mb="5px" pr="5px">
       <Select w="200px" value={`${sortBy}-${sortOrder}`} fontSize="13px" onChange={(e)=>{
         e.target.value ? updateSearch(e.target.value.split("-")[0] as SortBy, e.target.value.split("-")[1] as SortOrder) : resetSearch()
       }}>
