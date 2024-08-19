@@ -40,7 +40,7 @@ const ProductDetailsPage = () => {
 
   useEffect(()=>{
     getProduct()
-  },[])
+  },[id])
 
   useEffect(()=>{
     setIsExistInCart(user.isExistInCart(Number(id)))
