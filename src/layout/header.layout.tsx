@@ -46,10 +46,6 @@ const HeaderLayout = () => {
     setSearch(searchParams.get("search") || "")
   },[searchParams])
 
-  useEffect(()=>{
-    setIsSearchVisible(isMobile ? false : true)
-  },[isMobile])
-
   return (
     <Box position="fixed" left="0" top="0" zIndex={100} bg="var(--bgColor)" w="100%" h={{mobile: "60px", desktop: "100px"}} borderBottom="1px" borderColor="var(--borderColor)" p={{mobile: "5px", desktop: "10px"}}>
       <Box display="flex" flexDir="row" w="100%" h="100%" maxW="1440px" margin="auto">
