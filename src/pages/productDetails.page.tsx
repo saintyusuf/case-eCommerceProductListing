@@ -52,7 +52,7 @@ const ProductDetailsPage = () => {
       <Helmet>
         <title>{product?.title}</title>
       </Helmet>
-      <Box display="flex" h="100%">
+      <Box display="flex" flexDir={{mobile: "column", desktop: "row"}} h="100%">
         {
           isLoading && !product ? (
             <Box display="flex" justifyContent="center" alignItems="center" w="100%" h="100%">
@@ -60,7 +60,7 @@ const ProductDetailsPage = () => {
             </Box>
           ) : (
             <>
-              <Box w="50%" h="fit-content" aspectRatio="1/1" p="25px" bg="#fff">
+              <Box w={{mobile: "100%", desktop: "50%"}} h="fit-content" aspectRatio="1/1" p={{mobile: "10px", desktop: "25px"}} bg="#fff">
                 <Box as={Swiper}
                   slidesPerView={1}
                   modules={[Pagination]}
@@ -83,17 +83,17 @@ const ProductDetailsPage = () => {
                   }
                 </Box>
               </Box>
-              <Box w="50%" p="25px">
-                <Text fontSize="30px" fontWeight="600" mb="20px">{product?.title}</Text>
+              <Box w={{mobile: "100%", desktop: "50%"}} p={{mobile: "10px", desktop: "25px"}}>
+                <Text fontSize={{mobile: "20px", desktop: "30px"}} fontWeight="600" mb={{mobile: "10px", desktop: "20px"}}>{product?.title}</Text>
                 {
                   isExistInCart ? (
-                    <ButtonComponent children="Remove from Cart" fontSize="20px" p="20px" mb="20px" onClick={()=>user.removeFromCart(Number(id))}/>
+                    <ButtonComponent children="Remove from Cart" fontSize={{mobile: "14px", desktop: "20px"}} p={{mobile: "10px", desktop: "20px"}} mb={{mobile: "10px", desktop: "20px"}} onClick={()=>user.removeFromCart(Number(id))}/>
                   ) : (
-                    <ButtonComponent children="Add to Cart" fontSize="20px" p="20px" mb="20px" onClick={()=>user.addToCart(Number(id))}/>
+                    <ButtonComponent children="Add to Cart" fontSize={{mobile: "14px", desktop: "20px"}} p={{mobile: "10px", desktop: "20px"}} mb={{mobile: "10px", desktop: "20px"}} onClick={()=>user.addToCart(Number(id))}/>
                   )
                 }
-                <Text fontSize="36px" fontWeight="600" mb="20px">${product?.price}</Text>
-                <Text fontSize="16px" fontWeight="400" mb="20px">{product?.description}</Text>
+                <Text fontSize={{mobile: "24px", desktop: "36px"}} fontWeight="600" mb={{mobile: "10px", desktop: "20px"}}>${product?.price}</Text>
+                <Text fontSize={{mobile: "12px", desktop: "16px"}} fontWeight="400" mb={{mobile: "10px", desktop: "20px"}}>{product?.description}</Text>
               </Box>
             </>
           )
