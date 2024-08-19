@@ -56,7 +56,7 @@ const ProductsComponent = () => {
       if(res.data.limit === res.data.total){
         setMore(false)
       }
-      setLimit(limit+4)
+      setLimit(limit+8)
     }).catch((err:any)=>{
       console.log(err)
     }).finally(()=>{

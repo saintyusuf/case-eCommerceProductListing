@@ -13,6 +13,7 @@ import Layout from "./layout/index.layout"
 // PAGES
 import HomePage from "./pages/home.page"
 import ProductDetailsPage from "./pages/productDetails.page"
+import CartPage from "./pages/cart.page"
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
   {
     path: "/product/:id",
     element: <Layout children={<ProductDetailsPage/>}/>
+  },
+  {
+    path: "/cart",
+    element: <Layout children={<CartPage/>}/>
   }
 ])
 

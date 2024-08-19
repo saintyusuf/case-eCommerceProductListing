@@ -22,7 +22,7 @@ const Layout = (props: Props) => {
         </Box>
       </Box>
       <FooterLayout/>
-      <ToastContainer/>
+      <ToastContainer pauseOnHover={false}/>
     </Box>
   )
 }

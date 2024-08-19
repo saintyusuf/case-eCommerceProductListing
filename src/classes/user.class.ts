@@ -41,7 +41,7 @@ export default class User {
     const requests = this.user.cart.map(async (item) => axios.get(`https://dummyjson.com/products/${item.id}`))
     axios.all(requests).then(axios.spread((...responses) => {
       responses.forEach((res, i) => {
-        localCartItems.push({...res.data, quantity: this.user.cart[i].quantity, totalPrice: res.data.price * this.user.cart[i].quantity})
+        localCartItems.push({...res.data, quantity: this.user.cart[i].quantity, totalPrice: Number(res.data.price.toFixed(2)) * this.user.cart[i].quantity})
       })
       resolve(localCartItems)
     }))
