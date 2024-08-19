@@ -34,8 +34,6 @@ const ProductsComponent = () => {
 
       setProducts(localProducts)
 
-      console.log(res.data)
-
       if(res.data.limit === res.data.total || localProducts.length === 0){
         setMore(false)
       } 
