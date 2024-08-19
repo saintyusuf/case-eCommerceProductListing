@@ -60,7 +60,7 @@ const ProductDetailsPage = () => {
             </Box>
           ) : (
             <>
-              <Box w={{mobile: "100%", desktop: "50%"}} h="fit-content" aspectRatio="1/1" p={{mobile: "10px", desktop: "25px"}} bg="#fff">
+              <Box w={{mobile: "100%", desktop: "50%"}} h="fit-content" aspectRatio="1/1" p={{mobile: "10px", desktop: "25px"}}>
                 <Box as={Swiper}
                   slidesPerView={1}
                   modules={[Pagination]}
