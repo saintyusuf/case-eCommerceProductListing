@@ -24,14 +24,10 @@ const ProductDetailsPage = () => {
   function getProduct(){
     setIsLoading(true)
     axios.get(`https://dummyjson.com/products/${id}`).then((res:any)=>{
-      
-      if(res.data){
-        setProduct(res.data)     
-      } else {
-        toast("Product not found")
-        navigate("/")
-      }
-      
+      setProduct(res.data)           
+    }).catch(()=>{
+      toast("Product not found")
+      navigate("/")
     }).finally(()=>{
       setIsLoading(false)
     })
