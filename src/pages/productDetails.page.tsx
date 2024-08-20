@@ -14,6 +14,8 @@ import { Pagination } from "swiper/modules"
 import "swiper/css"
 import "swiper/css/pagination"
 import { Helmet } from "react-helmet-async"
+import { LazyLoadImage } from "react-lazy-load-image-component"
+import "react-lazy-load-image-component/src/effects/blur.css"
 
 const ProductDetailsPage = () => {
 
@@ -77,7 +79,7 @@ const ProductDetailsPage = () => {
                   {
                     product?.images.map((image:string,index:number)=>(
                       <SwiperSlide key={index}>
-                        <Img src={image} w="100%" h="100%" objectFit="contain"/>
+                        <Box as={LazyLoadImage} src={image} effect="blur" w="100%" h="100%" objectFit="contain"/>
                       </SwiperSlide>
                     ))
                   }

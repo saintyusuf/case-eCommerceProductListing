@@ -21,7 +21,7 @@ const Layout = (props: Props) => {
   
   return (
     <Box display="flex" flexDir="column" w="100%" h="100%">
-      <PageLoadingAnimationComponent/>
+      {/* <PageLoadingAnimationComponent/> */}
       <HeaderLayout/>
       <Box display="flex" flexDir="row" minH="calc(100vh - 317px - 100px)" mt={{mobile: "60px", desktop: "100px"}} mx="auto" w="100%" maxW="1440px">
         {props.isSidebarVisible && <SidebarLayout/>}

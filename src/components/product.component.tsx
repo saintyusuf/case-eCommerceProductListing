@@ -6,6 +6,8 @@ import User from "../classes/user.class"
 import { useSelector } from "react-redux"
 import { RootState } from "../redux/store"
 import { Link } from "react-router-dom"
+import { LazyLoadImage } from "react-lazy-load-image-component"
+import "react-lazy-load-image-component/src/effects/blur.css"
 
 interface Props {
   product: ProductType
@@ -26,7 +28,7 @@ const ProductComponent = (props:Props) => {
     <Box key={props.product.id} w={{mobile: "50%", desktop: "25%"}} p="5px">
       <Box w="100%" h="100%" border="1px solid var(--borderColor)" borderRadius="10px" overflow="hidden" onMouseEnter={()=>setFooterButtonVisible(true)} onMouseLeave={()=>setFooterButtonVisible(false)}>
         <Box as={Link} to={`/product/${props.product.id}`} display="block" w="100%" h="200px" p="15px" overflow="hidden">
-          <Img src={props.product.images[0]} w="100%" h="100%" objectFit="contain"/>
+          <Box as={LazyLoadImage} src={props.product.images[0]} effect="blur" w="100%" h="100%" objectFit="contain"/>
         </Box>
         <Box pos="relative" h="90px">
           {

@@ -8,6 +8,7 @@ import { RootState } from "../redux/store"
 import NumberInputComponent from "./numberInput.component"
 import { Link, useNavigate } from "react-router-dom"
 import { MdClose as IconClose } from "react-icons/md"
+import { LazyLoadImage } from "react-lazy-load-image-component"
 
 type Props = {
   isVisible: boolean
@@ -128,7 +129,7 @@ const CartItem = (props:CartItemProps) => {
   return (
     <Box display="flex" flexDir="row" alignItems="center" w="100%" h="50px" p="5px" borderBottom="1px solid var(--borderColor)" sx={{"&:last-child": {borderBottom: 0}}} {...restProps}>
       <Box as={Link} to={`/product/${product.id}`} display="block" w="9%" mr="1%" h="100%">
-        <Img src={product.images[0]} w="100%" h="100%" objectFit="contain"/>
+        <Box as={LazyLoadImage} src={product.images[0]} effect="blur" w="100%" h="100%" objectFit="contain"/>
       </Box>
       <Box as={Link} to={`/product/${product.id}`} display="block" w="39%" mr="1%">
         <Text w="100%" noOfLines={1} fontSize="12px" textAlign="left">{product.title}</Text>
