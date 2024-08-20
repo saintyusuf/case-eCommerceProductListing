@@ -1,37 +1,25 @@
-import { Box, Checkbox, Text, useMediaQuery } from "@chakra-ui/react"
+import { Box, Checkbox, Text } from "@chakra-ui/react"
 import { useEffect, useState } from "react"
 import { CartFullDataType } from "../types/cart.type"
-import User from "../classes/user.class"
-import { useSelector } from "react-redux"
-import { RootState } from "../redux/store"
 import { useNavigate } from "react-router-dom"
 import { CartRows } from "../components/cart.component"
 import ButtonComponent from "../components/button.component"
 import { Helmet } from "react-helmet-async"
+import useUser from "../hooks/useUser.hook"
 
 const CartPage = () => {
 
-  const appStates = useSelector((state:RootState)=>state.app)
-
-  const [isMobile] = useMediaQuery("(max-width: 899px)")
-  const [isSearchVisible, setIsSearchVisible] = useState(isMobile ? false : true)
-
-  useEffect(()=>{
-    setIsSearchVisible(isMobile ? false : true)
-  },[isMobile, appStates])
-
   const navigate = useNavigate()
 
-  const user = new User()
-  const userStates = useSelector((state:RootState)=>state.user)
+  const { getCartItems, getCartItemsFullData, getCartTotalPrice } = useUser()
   const [cartItemsFullData, setCartItemsFullData] = useState<CartFullDataType[]>([])
   const [cartTotalPrice, setCartTotalPrice] = useState<string>("")
   const [isAgreed, setIsAgreed] = useState<boolean>(false)
 
   useEffect(()=>{
-    user.getCartItemsFullData().then((data) => setCartItemsFullData(data))
-    user.getCartTotalPrice().then((data) => setCartTotalPrice(data))
-  },[userStates.cart])
+    getCartItemsFullData().then((data) => setCartItemsFullData(data))
+    getCartTotalPrice().then((data) => setCartTotalPrice(data))
+  },[getCartItems()])
   
   return (
     <>

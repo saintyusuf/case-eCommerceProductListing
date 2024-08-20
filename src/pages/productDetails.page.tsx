@@ -1,12 +1,9 @@
-import { Box, Img, Text } from "@chakra-ui/react"
+import { Box, Text } from "@chakra-ui/react"
 import axios from "axios"
 import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import ProductType from "../types/product.type"
 import ButtonComponent from "../components/button.component"
-import User from "../classes/user.class"
-import { useSelector } from "react-redux"
-import { RootState } from "../redux/store"
 import LoadingComponent from "../components/loading.component"
 import { toast } from "react-toastify"
 import { Swiper, SwiperSlide } from "swiper/react"
@@ -16,26 +13,25 @@ import "swiper/css/pagination"
 import { Helmet } from "react-helmet-async"
 import { LazyLoadImage } from "react-lazy-load-image-component"
 import "react-lazy-load-image-component/src/effects/blur.css"
+import useUser from "../hooks/useUser.hook"
 
 const ProductDetailsPage = () => {
 
   const navigate = useNavigate()
 
   const { id } = useParams<{id:string}>() 
-  const user = new User()
-  const userStates = useSelector((state:RootState)=>state.user)
+  const { isExistInCart, removeFromCart, addToCart } = useUser()
   const [product, setProduct] = useState<ProductType>()
   const [isLoading, setIsLoading] = useState<boolean>(false)
-  const [isExistInCart, setIsExistInCart] = useState<boolean>(false)
 
   function getProduct(){
     setIsLoading(true)
     axios.get(`https://dummyjson.com/products/${id}?select=id,title,price,images,stock,description`).then((res:any)=>{
       setProduct(res.data)           
-      console.log(res.data)
-    }).catch(()=>{
+    }).catch((err)=>{
       toast("Product not found")
       navigate("/")
+      console.log(err)
     }).finally(()=>{
       setIsLoading(false)
     })
@@ -44,10 +40,6 @@ const ProductDetailsPage = () => {
   useEffect(()=>{
     getProduct()
   },[id])
-
-  useEffect(()=>{
-    setIsExistInCart(user.isExistInCart(Number(id)))
-  },[userStates.cart])
 
   return (
     <>
@@ -79,7 +71,14 @@ const ProductDetailsPage = () => {
                   {
                     product?.images.map((image:string,index:number)=>(
                       <SwiperSlide key={index}>
-                        <Box as={LazyLoadImage} src={image} effect="blur" w="100%" h="100%" objectFit="contain"/>
+                        <Box w="100%" h="100%" sx={{
+                          "& span": {
+                            w: "100%",
+                            h: "100%",
+                          }
+                        }}>
+                          <Box as={LazyLoadImage} src={image} effect="blur" w="100%" h="100%" objectFit="contain"/>
+                        </Box>
                       </SwiperSlide>
                     ))
                   }
@@ -88,10 +87,10 @@ const ProductDetailsPage = () => {
               <Box w={{mobile: "100%", desktop: "50%"}} p={{mobile: "10px", desktop: "25px"}}>
                 <Text fontSize={{mobile: "20px", desktop: "30px"}} fontWeight="600" mb={{mobile: "10px", desktop: "20px"}}>{product?.title}</Text>
                 {
-                  isExistInCart ? (
-                    <ButtonComponent children="Remove from Cart" fontSize={{mobile: "14px", desktop: "20px"}} p={{mobile: "10px", desktop: "20px"}} mb={{mobile: "10px", desktop: "20px"}} onClick={()=>user.removeFromCart(Number(id))}/>
+                  isExistInCart(Number(id)) ? (
+                    <ButtonComponent children="Remove from Cart" fontSize={{mobile: "14px", desktop: "20px"}} p={{mobile: "10px", desktop: "20px"}} mb={{mobile: "10px", desktop: "20px"}} onClick={()=>removeFromCart(Number(id))}/>
                   ) : (
-                    <ButtonComponent children="Add to Cart" fontSize={{mobile: "14px", desktop: "20px"}} p={{mobile: "10px", desktop: "20px"}} mb={{mobile: "10px", desktop: "20px"}} onClick={()=>user.addToCart(Number(id))}/>
+                    <ButtonComponent children="Add to Cart" fontSize={{mobile: "14px", desktop: "20px"}} p={{mobile: "10px", desktop: "20px"}} mb={{mobile: "10px", desktop: "20px"}} onClick={()=>addToCart(Number(id))}/>
                   )
                 }
                 <Text fontSize={{mobile: "24px", desktop: "36px"}} fontWeight="600" mb={{mobile: "10px", desktop: "20px"}}>${product?.price}</Text>

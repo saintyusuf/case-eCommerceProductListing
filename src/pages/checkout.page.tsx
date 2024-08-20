@@ -1,15 +1,20 @@
-import { Box, Text, useMediaQuery } from "@chakra-ui/react"
+import { Box, Text } from "@chakra-ui/react"
 import Lottie from "react-lottie"
 import AnimationSuccess from "../assets/animations/success.json"
 import { Helmet } from "react-helmet-async"
-import User from "../classes/user.class"
+import useUser from "../hooks/useUser.hook"
+import useMobile from "../hooks/useMobile.hook"
+import { useEffect } from "react"
 
 const CheckoutPage = () => {
 
-  const [isMobile] = useMediaQuery("(max-width: 899px)")
+  const { isMobile} = useMobile()
 
-  const user = new User()
-  user.clearCart()
+  const { clearCart } = useUser()
+  
+  useEffect(()=>{
+    clearCart()
+  },[])
 
   const animationOptions = {
     loop: false,

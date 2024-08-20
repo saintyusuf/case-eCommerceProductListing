@@ -45,7 +45,7 @@ const PageLoadingAnimationComponent = () => {
   
   return (
     <Box ref={refContainer} pos="fixed" left="0" top="0" w="100%" h="100%" bg="var(--bgColor)" zIndex={1000}>
-      <LogoComponent innerRef={refLogo} pos="absolute" left="50%" bottom="-50%" sx={{transform: "translateX(-50%)"}} />
+      <LogoComponent innerRef={refLogo} pos="absolute" left="50%" bottom="-50%" sx={{transform: "translateX(-50%)"}} pointerEvents="none"/>
     </Box>
   )
 }

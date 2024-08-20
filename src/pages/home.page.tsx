@@ -1,16 +1,12 @@
 import { Box } from "@chakra-ui/react"
 import { Helmet } from "react-helmet-async"
 import ProductsComponent from "../components/products.component"
-import { useSearchParams } from "react-router-dom"
 import { useEffect } from "react"
+import useSearchParams from "../hooks/useSearchParams.hook"
 
 const HomePage = () => {
-
-  const [searchParam, setSearchParam] = useSearchParams()
-
-  useEffect(()=>{
-
-  },[searchParam])
+  
+  const {getAllSearchParams} = useSearchParams()
   
   return (
     <Box h="100%">
@@ -18,7 +14,7 @@ const HomePage = () => {
         <title>Home</title>
       </Helmet>
       <Box h="100%">
-        <ProductsComponent key={searchParam.toString()}/>
+        <ProductsComponent key={getAllSearchParams().toString()}/>
       </Box>
     </Box>
   )

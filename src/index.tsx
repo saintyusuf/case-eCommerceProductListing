@@ -44,12 +44,12 @@ const root = ReactDOM.createRoot(
 )
 root.render(
   <React.StrictMode>
-    <ReduxProvider store={store}>
-      <HelmetProvider>
-        <ChakraProvider theme={theme}>
+    <ChakraProvider theme={theme}>
+      <ReduxProvider store={store}>
+        <HelmetProvider>
           <RouterProvider router={router}/>
-        </ChakraProvider>
-      </HelmetProvider>
-    </ReduxProvider>
+        </HelmetProvider>
+      </ReduxProvider>
+    </ChakraProvider>
   </React.StrictMode>
 )

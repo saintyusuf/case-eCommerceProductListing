@@ -1,5 +1,5 @@
 import React from "react"
-import { Box, useMediaQuery } from "@chakra-ui/react"
+import { Box } from "@chakra-ui/react"
 import HeaderLayout from "./header.layout"
 import FooterLayout from "./footer.layout"
 import SidebarLayout from "./sidebar.layout"
@@ -8,6 +8,7 @@ import "react-toastify/dist/ReactToastify.css"
 import TopbarLayout from "./topbar.layout"
 import ScrollToTopComponent from "../components/scrollToTop.component"
 import PageLoadingAnimationComponent from "../components/pageLoadingAnimation.component"
+import useMobile from "../hooks/useMobile.hook"
 
 interface Props {
   children: React.ReactNode
@@ -17,7 +18,7 @@ interface Props {
 
 const Layout = (props: Props) => {
 
-  const [isMobile] = useMediaQuery("(max-width: 899px)")
+  const {isMobile} = useMobile()
   
   return (
     <Box display="flex" flexDir="column" w="100%" h="100%">
