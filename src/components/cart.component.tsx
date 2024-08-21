@@ -31,12 +31,12 @@ const CartComponent = (props: Props) => {
     getCartTotalPrice().then((data) => setCartTotalPrice(data))
   },[getCartItems()])
 
-  useEffect(() => {
+  useEffect(() => {  
     // close cart component on click outside
     const handleClickOutside = (e: any) => {
       if (!refCart.current?.contains(e.target) && e.target.id !== "cartButton"){
         closeCart()
-      }
+      } 
     }
 
     // close cart component on press escape key
@@ -45,7 +45,7 @@ const CartComponent = (props: Props) => {
         closeCart()
       }
     }
-    
+      
     document.addEventListener("click", handleClickOutside)
     document.addEventListener("keydown", handleEscape)
     return () => {

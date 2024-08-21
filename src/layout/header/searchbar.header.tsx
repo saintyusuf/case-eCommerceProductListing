@@ -5,12 +5,14 @@ import { MdClose as IconClose } from "react-icons/md"
 import { useEffect, useState } from "react"
 import useApp from "../../hooks/useApp.hook"
 import useSearchParams from "../../hooks/useSearchParams.hook"
+import { useNavigate } from "react-router-dom"
 
 const SearchbarHeader = () => {
 
   const app = useApp()
   const {getSearchParam, setSearchParam, getAllSearchParams} = useSearchParams()
   const {isMobile} = useMobile()
+  const navigate = useNavigate()
 
   const [search, setSearch] = useState<string>(getSearchParam("search") || "")
 
@@ -18,6 +20,7 @@ const SearchbarHeader = () => {
     if(search === ""){
       setSearchParam("search", "")
     } else {
+      navigate("/")
       setSearchParam("search", search)
     }
     app.toggleSearchbar()

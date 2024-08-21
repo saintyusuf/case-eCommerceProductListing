@@ -9,8 +9,8 @@ const useApp = () => {
   const {isMobile} = useMobile()
 
   const toggleSidebar = () => {
-    dispatch({type:"app/toggleSidebar"})
     if(isMobile){
+      dispatch({type:"app/toggleSidebar"})
       if(document.body.classList.contains("noScroll")){
         document.body.classList.remove("noScroll")
       } else {
@@ -24,8 +24,8 @@ const useApp = () => {
   }
 
   const toggleSearchbar = () => {
-    dispatch({type:"app/toggleSearchbar"})
     if(isMobile){
+      dispatch({type:"app/toggleSearchbar"})
       if(document.body.classList.contains("noScroll")){
         document.body.classList.remove("noScroll")
       } else {
@@ -50,9 +50,7 @@ const useApp = () => {
   }
 
   const closeCart = () => {
-    if(getCartVisibility()){
-      dispatch({type:"app/closeCart"})
-    }
+    dispatch({type:"app/closeCart"})
     if(isMobile){
       if(document.body.classList.contains("noScroll")){
         document.body.classList.remove("noScroll")
