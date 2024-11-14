@@ -103,7 +103,17 @@
         Result
       </td>
       <td>
-        <p>Loading...</p>
+        <img src="https://github.com/saintyusuf/case-eCommerceProductListing/blob/main/case-details/1.png" alt="Result (Desktop)">
+        <img src="https://github.com/saintyusuf/case-eCommerceProductListing/blob/main/case-details/2.png" alt="Result (Desktop)">
+        <img src="https://github.com/saintyusuf/case-eCommerceProductListing/blob/main/case-details/3.png" alt="Result (Desktop)">
+        <img src="https://github.com/saintyusuf/case-eCommerceProductListing/blob/main/case-details/4.png" alt="Result (Desktop)">
+        <img src="https://github.com/saintyusuf/case-eCommerceProductListing/blob/main/case-details/5.png" alt="Result (Desktop)">
+        <img src="https://github.com/saintyusuf/case-eCommerceProductListing/blob/main/case-details/11.png" height="500px" alt="Result (Mobile)">
+        <img src="https://github.com/saintyusuf/case-eCommerceProductListing/blob/main/case-details/12.png" height="500px" alt="Result (Mobile)">
+        <img src="https://github.com/saintyusuf/case-eCommerceProductListing/blob/main/case-details/13.png" height="500px" alt="Result (Mobile)">
+        <img src="https://github.com/saintyusuf/case-eCommerceProductListing/blob/main/case-details/14.png" height="500px" alt="Result (Mobile)">
+        <img src="https://github.com/saintyusuf/case-eCommerceProductListing/blob/main/case-details/15.png" height="500px" alt="Result (Mobile)">
+        <img src="https://github.com/saintyusuf/case-eCommerceProductListing/blob/main/case-details/16.png" height="500px" alt="Result (Mobile)">
       </td>
     </tr>
   </tbody>
@@ -114,9 +124,24 @@
 
 This is a case study to measure some React.js skills.
 
+## Features
+
+- Responsive design
+- Layout design
+- Infinite scrolling
+- Lazy loading images
+- Filtering and sorting
+- Shopping cart, add to cart, change quantity, remove from cart
+- Website loading animation
+- Fetch product data from a mock api
+- Dark mode
+- Custom hooks
+- Product search
+- Product images slider
+
 ## Stack
 
-HTML, CSS, JS, TS, React.js, Chakra UI, Redux Toolkit, Axios, GSAP, React Helmet, React Loader Spinner, React Toastify
+HTML, CSS, JS, TS, React.js, Chakra UI, Redux Toolkit, Axios, GSAP, React Helmet, React Loader Spinner, React Toastify, React Infinite Scroll Component, React Lazy Load Image Component, Lottie, Swiper, React Router Dom
 
 ## Installation
 
